@@ -1,0 +1,115 @@
+{
+  "name": "ping-service",
+  "version": "1.0.0",
+  "description": "Pings network hosts and implements Service Node messaging.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/catchtechnologies/service-node-service-template.git"
+  },
+  "author": "Patrick Murray",
+  "license": "MIT",
+  "dependencies": {
+    "catch-messaging": "^1.4.2",
+    "ping": "^0.2.3",
+    "pkg": "^4.4.9",
+    "yargs": "^15.4.1"
+  },
+  "bin": "main.js",
+  "parameters": [
+    {
+      "parameter": "hosts",
+      "name": "Hosts",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "placeholder": "Enter the host names or IP addresses separated by a comma.",
+      "tooltip": "The hosts to ping separated by commas."
+    },
+    {
+      "parameter": "timeout",
+      "name": "Timeout",
+      "type": "number",
+      "default": "",
+      "required": true,
+      "placeholder": "Enter the timeout in seconds.",
+      "tooltip": "Timeout in seconds for each ping request."
+    },
+    {
+      "parameter": "debug",
+      "name": "Debug",
+      "type": "bool",
+      "default": false,
+      "required": false,
+      "placeholder": "",
+      "tooltip": "Prints debug messages when enabled."
+    }
+  ],
+  "commands": [
+    {
+      "name": "Ping",
+      "editable": false,
+      "pattern": "pingHosts",
+      "useHex": false,
+      "endWith": "none",
+      "descriptions": [
+        {
+          "title": "Description",
+          "body": "Pings the hosts."
+        }
+      ],
+      "channel": "example.ping.hosts"
+    },
+    {
+      "name": "Ping Direct",
+      "editable": false,
+      "pattern": "ping:#PAYLOAD#",
+      "useHex": false,
+      "endWith": "none",
+      "descriptions": [
+        {
+          "title": "Description",
+          "body": "Pings the supplied hosts."
+        }
+      ],
+      "channel": "example.ping.hosts.direct"
+    }
+  ],
+  "responses": [
+    {
+      "name": "Is Alive",
+      "editable": false,
+      "pattern": "^isAlive:(.+)$",
+      "useHex": false,
+      "endWith": "none",
+      "useRegularExpression": true,
+      "descriptions": [
+        {
+          "title": "Description",
+          "body": "Indicates if a host is alive."
+        }
+      ],
+      "channel": "example.ping.success",
+      "persist": false
+    },
+    {
+      "name": "Is Not Alive",
+      "editable": false,
+      "pattern": "^isNotAlive:(.+)$",
+      "useHex": false,
+      "endWith": "none",
+      "useRegularExpression": true,
+      "descriptions": [
+        {
+          "title": "Description",
+          "body": "Indicates if a host is alive."
+        }
+      ],
+      "channel": "example.ping.fail",
+      "persist": false
+    }
+  ]
+}
