@@ -61,7 +61,7 @@
           "body": "Pings the hosts."
         }
       ],
-      "channel": "example.ping.hosts"
+      "channel": "ping"
     },
     {
       "name": "Ping Direct",
@@ -75,7 +75,7 @@
           "body": "Pings the supplied hosts."
         }
       ],
-      "channel": "example.ping.hosts.direct"
+      "channel": "ping.ip"
     }
   ],
   "responses": [
@@ -92,7 +92,7 @@
           "body": "Indicates if a host is alive."
         }
       ],
-      "channel": "example.ping.success",
+      "channel": "ping.success",
       "persist": false
     },
     {
@@ -108,7 +108,7 @@
           "body": "Indicates if a host is alive."
         }
       ],
-      "channel": "example.ping.fail",
+      "channel": "ping.fail",
       "persist": false
     }
   ]
